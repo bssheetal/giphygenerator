@@ -27,12 +27,16 @@ function displaygiphy() {
     }).then(function (response) {
 
         var div=$("<div>");
-        div.addClass("giphy-list");
+        div.addClass("giphy-details");
         console.log(response);
-        var rating=$("<p>").text("Rating"+response.data[0].rating);
+        var rating=$("<p>").text("Rating :"+response.data[0].rating);
         console.log(response.data[0].rating);
         div.append(rating);
-        $(".giphylist").prepend(div);
+        $("#giphy-list").prepend(div);
+        var imgurl=response.data[0].bitly_gif_url;
+        var gif=$("<img>").attr("src",imgurl);
+        rating.append(gif);
+
     });
 }
 
