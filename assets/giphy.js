@@ -1,5 +1,23 @@
-var topics = [];
+var topics = ["cat","dog"];
 
+
+$(document).on("click", ".gif", function () {
+    console.log("im clicked");
+    var state = $(this).attr("data-state");
+    var stillurl=$(this).attr("data-still");
+    var animateurl=$(this).attr("data-animate");     
+    if (state === "animate") {
+        $(this).attr("src", stillurl);
+        $(this).attr("data-state", "still");
+
+    }
+    else{
+        $(this).attr("src", animateurl);
+        $(this).attr("data-state", "animate");
+    }
+
+
+});
 $(".btn-submit").on("click", function (event) {
     event.preventDefault();
     var animal = $("#Animal-input").val().trim();
@@ -18,6 +36,7 @@ function renderbuttons() {
     }
 }
 
+renderbuttons();
 function displaygiphy() {
     var animal = $(this).attr("data-name");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&limit=25&offset=0&rating=G&lang=en&api_key=k8LPY8A1uvrb8nSlB7CrB5Al9j03OOvI";
@@ -35,29 +54,19 @@ function displaygiphy() {
             var rating = p.text("Rating :" + resultlist[i].rating);
             console.log(resultlist[i].rating);
             var imgurl = resultlist[i].images.original.url;
+            var stillurl = resultlist[i].images.original_still.url;
             var gif = $("<img>");
             gif.addClass("gif");
             gif.attr("data-state", "animate");
             gif.attr("src", imgurl);
+            gif.attr("data-still", stillurl);
+            gif.attr("data-animate",imgurl);
             gifdiv.append(rating);
             gifdiv.append(gif);
             $("#giphy-list").prepend(gifdiv);
-
-
-            $(".gif").on("click", function () {
-                var state = $(this).attr("data-state");
-
-                if (state === "animate") {
-                    var stillurl =resultlist[i].images.original_still.url;
-                    $(this).attr("src",stillurl);
-                    $(this).attr("data-state","still");
-
-              }
-
-
-
-            });
         }
+
+      
 
     });
 }
