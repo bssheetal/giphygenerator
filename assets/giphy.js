@@ -26,18 +26,22 @@ function displaygiphy() {
         method: "GET",
     }).then(function (response) {
 
-        var div=$("<div>");
-        div.addClass("giphy-details");
-        console.log(response);
-        var rating=$("<p>").text("Rating :"+response.data[0].rating);
-        console.log(response.data[0].rating);
-        div.append(rating);
-        $("#giphy-list").prepend(div);
-        var imgurl=response.data[0].bitly_gif_url;
-        var gif=$("<img>").attr("src",imgurl);
-        rating.append(gif);
+        var resultlist = response.data;
+        for (var i = 0; i < resultlist.length; i++) {
+            var gifdiv = $("<div>");
+            gifdiv.addClass("col-sm-3");
+            var p = $("<p>");
+            var rating = p.text("Rating :" + resultlist[i].rating);
+            console.log(resultlist[i].rating);
+            var imgurl = resultlist[i].images.original.url;
+            var gif = $("<img>");
+            gif.attr("src", imgurl);
+            gifdiv.append(rating);
+            gifdiv.append(gif);
+            $("#giphy-list").prepend(gifdiv);
+        }
 
     });
 }
 
-$(document).on("click",".animal",displaygiphy);
+$(document).on("click", ".animal", displaygiphy);
