@@ -27,6 +27,7 @@ function displaygiphy() {
     }).then(function (response) {
 
         var resultlist = response.data;
+        console.log(resultlist);
         for (var i = 0; i < resultlist.length; i++) {
             var gifdiv = $("<div>");
             gifdiv.addClass("col-sm-3");
@@ -35,13 +36,32 @@ function displaygiphy() {
             console.log(resultlist[i].rating);
             var imgurl = resultlist[i].images.original.url;
             var gif = $("<img>");
+            gif.addClass("gif");
+            gif.attr("data-state", "animate");
             gif.attr("src", imgurl);
             gifdiv.append(rating);
             gifdiv.append(gif);
             $("#giphy-list").prepend(gifdiv);
+
+
+            $(".gif").on("click", function () {
+                var state = $(this).attr("data-state");
+
+                if (state === "animate") {
+                    var stillurl =resultlist[i].images.original_still.url;
+                    $(this).attr("src",stillurl);
+                    $(this).attr("data-state","still");
+
+              }
+
+
+
+            });
         }
 
     });
 }
+
+
 
 $(document).on("click", ".animal", displaygiphy);
