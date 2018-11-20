@@ -17,11 +17,17 @@
 img {
     vertical-align: middle;
     border-style: none;
-    width: 300px;
+    width: 200px;
     height: 200px;
-}
+    margin-left: 2px;
+}                                                 
 
 p
 {
     font-weight: bold;
+}
+
+.bg-white
+{
+    margin-left: 180px;
 }
