@@ -29,7 +29,7 @@ function renderbuttons() {
     $("#buttons-view").empty();
     for (var i = 0; i < animals.length; i++) {
         var a = $("<button>");
-        a.addClass("animal");
+        a.addClass("btn-animal btn-primary");
         a.attr("data-name", animals[i]);
         a.text(animals[i]);
         $("#buttons-view").append(a);
@@ -39,7 +39,7 @@ function renderbuttons() {
 renderbuttons();
 function displaygiphy() {
     var animal = $(this).attr("data-name");
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&limit=25&offset=0&rating=G&lang=en&api_key=k8LPY8A1uvrb8nSlB7CrB5Al9j03OOvI";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&limit=10&offset=0&rating=G&lang=en&api_key=k8LPY8A1uvrb8nSlB7CrB5Al9j03OOvI";
     $.ajax({
         url: queryURL,
         method: "GET",
@@ -73,4 +73,4 @@ function displaygiphy() {
 
 
 
-$(document).on("click", ".animal", displaygiphy);
+$(document).on("click", ".btn-animal", displaygiphy);
