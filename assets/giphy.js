@@ -56,9 +56,9 @@ function displaygiphy() {
             var imgurl = resultlist[i].images.original.url;
             var stillurl = resultlist[i].images.original_still.url;
             var gif = $("<img>");
-            gif.addClass("gif");
-            gif.attr("data-state", "animate");
-            gif.attr("src", imgurl);
+            gif.addClass("gif");            
+            gif.attr("data-state", "still");
+            gif.attr("src", stillurl);
             gif.attr("data-still", stillurl);
             gif.attr("data-animate",imgurl);
             gifdiv.append(rating);
