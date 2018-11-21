@@ -1,4 +1,4 @@
-var topics = ["cat","dog"];
+var animals = ["cat","dog"];
 
 
 $(document).on("click", ".gif", function () {
@@ -21,17 +21,17 @@ $(document).on("click", ".gif", function () {
 $(".btn-submit").on("click", function (event) {
     event.preventDefault();
     var animal = $("#Animal-input").val().trim();
-    topics.push(animal);
+    animals.push(animal);
     renderbuttons();
 });
 
 function renderbuttons() {
     $("#buttons-view").empty();
-    for (var i = 0; i < topics.length; i++) {
+    for (var i = 0; i < animals.length; i++) {
         var a = $("<button>");
         a.addClass("animal");
-        a.attr("data-name", topics[i]);
-        a.text(topics[i]);
+        a.attr("data-name", animals[i]);
+        a.text(animals[i]);
         $("#buttons-view").append(a);
     }
 }
