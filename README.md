@@ -1,1 +1,2 @@
 # giphygenerator
+Random gif generator with dynamically added user input buttons Uses Giphy's REST API called using AJAX.Here User's can add their own search button, GIFs load in a paused state, they activate on click. JQuery does all the heavy lifting.

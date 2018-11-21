@@ -1,4 +1,4 @@
-var animals = ["cat","dog"];
+var animals = ["Cat","Dog","Elephant","Snakes","Horse","Bear","Whale","Panda","Dolphin"];
 
 
 $(document).on("click", ".gif", function () {
